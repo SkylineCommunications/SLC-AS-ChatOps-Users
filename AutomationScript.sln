@@ -31,14 +31,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code Analysis", "Code Analy
 		Internal\Code Analysis\qaction-release.ruleset = Internal\Code Analysis\qaction-release.ruleset
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Show connected users", "Show connected users", "{FFB96F16-8A89-4044-AF72-68873B7D6760}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Show Connected Users", "Show Connected Users", "{2A849828-239E-4542-A536-7BCAA9D82E82}"
 	ProjectSection(SolutionItems) = preProject
-		Show connected users.xml = Show connected users.xml
+		Show Connected Users.xml = Show Connected Users.xml
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{359D4D30-0CC7-42D7-9E6E-1B794130DB8E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{798ECB8E-8A19-447C-8534-838A66404700}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Show connected users_1", "Show connected users_1\Show connected users_1.csproj", "{9C61973B-40CB-4A4D-902C-EEFE32FDF638}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Show Connected Users_1", "Show Connected Users_1\Show Connected Users_1.csproj", "{8086EE82-B41F-4077-BA24-E3F9C291AECB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,10 +46,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9C61973B-40CB-4A4D-902C-EEFE32FDF638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9C61973B-40CB-4A4D-902C-EEFE32FDF638}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9C61973B-40CB-4A4D-902C-EEFE32FDF638}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9C61973B-40CB-4A4D-902C-EEFE32FDF638}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8086EE82-B41F-4077-BA24-E3F9C291AECB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8086EE82-B41F-4077-BA24-E3F9C291AECB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8086EE82-B41F-4077-BA24-E3F9C291AECB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8086EE82-B41F-4077-BA24-E3F9C291AECB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,9 +57,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{E712EF2E-4F45-4891-9DB2-F96B48A8703C} = {6FA852E8-6B57-479F-9BA7-A8FE136A2E79}
 		{AD27E334-BD7F-4740-A7FC-C7AF5F45E3CF} = {ECCE3931-C80F-44FA-8995-D06DD799F1DF}
-		{FFB96F16-8A89-4044-AF72-68873B7D6760} = {BCAC682E-1CAC-4EA3-B932-87179F98B88C}
-		{359D4D30-0CC7-42D7-9E6E-1B794130DB8E} = {FFB96F16-8A89-4044-AF72-68873B7D6760}
-		{9C61973B-40CB-4A4D-902C-EEFE32FDF638} = {359D4D30-0CC7-42D7-9E6E-1B794130DB8E}
+		{2A849828-239E-4542-A536-7BCAA9D82E82} = {BCAC682E-1CAC-4EA3-B932-87179F98B88C}
+		{798ECB8E-8A19-447C-8534-838A66404700} = {2A849828-239E-4542-A536-7BCAA9D82E82}
+		{8086EE82-B41F-4077-BA24-E3F9C291AECB} = {798ECB8E-8A19-447C-8534-838A66404700}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8C6C47E7-25C1-4E90-931C-E5C1BB3EC78F}
