@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <DMSScript options="272" xmlns="http://www.skyline.be/automation">
-	<Name>User Action</Name>
+	<Name>Show Connected Users</Name>
 	<Description></Description>
 	<Type>Automation</Type>
-	<Author>SKYLINE2\Joey</Author>
+	<Author>SKYLINE2\JoachimAY</Author>
 	<CheckSets>FALSE</CheckSets>
 	<Folder>bot</Folder>
 
@@ -18,7 +18,7 @@
 
 	<Script>
 		<Exe id="1" type="csharp">
-			<Value><![CDATA[[Project:User Action_1]]]></Value>
+			<Value><![CDATA[[Project:Show Connected Users_1]]]></Value>
 			<!--<Param type="debug">true</Param>-->
 			<Message></Message>
 		</Exe>

@@ -45,18 +45,20 @@ Revision History:
 
 DATE		VERSION		AUTHOR			COMMENTS
 
-dd/mm/2023	1.0.0.1		XXX, Skyline	Initial version
+14/06/2023	1.0.0.1		JAY, Skyline	Initial version
 ****************************************************************************
 */
 
-namespace User_Action_1
+namespace Show_Connected_Users_1
 {
 	using System;
 	using System.Collections.Generic;
 	using System.Globalization;
 	using System.Text;
+	using AdaptiveCards;
+	using Newtonsoft.Json;
 	using Skyline.DataMiner.Automation;
-	
+
 	/// <summary>
 	/// Represents a DataMiner Automation script.
 	/// </summary>
@@ -68,7 +70,12 @@ namespace User_Action_1
 		/// <param name="engine">Link with SLAutomation process.</param>
 		public void Run(IEngine engine)
 		{
-	
+			var card = new List<AdaptiveElement>
+			{
+				new AdaptiveTextBlock($"Below you can find the list of all the users connected.") { Wrap = true },
+			};
+
+			engine.AddScriptOutput("AdaptiveCard", JsonConvert.SerializeObject(card));
 		}
 	}
 }
