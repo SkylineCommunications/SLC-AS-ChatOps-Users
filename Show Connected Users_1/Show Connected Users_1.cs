@@ -58,6 +58,10 @@ namespace Show_Connected_Users_1
 	using AdaptiveCards;
 	using Newtonsoft.Json;
 	using Skyline.DataMiner.Automation;
+	using Skyline.DataMiner.Net.PerformanceIndication;
+	using Skyline.DataMiner.Net;
+	using Skyline.DataMiner.Net.Messages;
+	using System.Linq;
 
 	/// <summary>
 	/// Represents a DataMiner Automation script.
@@ -72,8 +76,31 @@ namespace Show_Connected_Users_1
 		{
 			var card = new List<AdaptiveElement>
 			{
-				new AdaptiveTextBlock($"Below you can find the list of all the users connected.") { Wrap = true },
+				new AdaptiveTextBlock($"Below you can find the list of all the users connected and via which client.") { Wrap = true },
 			};
+
+			var getInfoMessage = new GetInfoMessage(InfoType.ClientList);
+			DMSMessage[] response = engine.SendSLNetMessage(getInfoMessage);
+			int counter = 0;
+			int responsesCount = response.Count();
+
+			card.Add(new AdaptiveTextBlock($"Found {responsesCount} response(s) in total of type 'LoginInfoResponseMessage'."));
+
+			foreach (Skyline.DataMiner.Net.Messages.LoginInfoResponseMessage responseMessage in response)
+			{
+				if (responseMessage.FriendlyName.ToLower().Contains("cube"))
+				{
+					card.Add(new AdaptiveTextBlock($"Via Cube: {responseMessage.FullName}"));
+					counter++;
+				};
+				if (responseMessage.FriendlyName.ToLower().Contains("html5"))
+				{
+					card.Add(new AdaptiveTextBlock($"Via HTML5 App: {responseMessage.FullName}"));
+					counter++;
+				};
+			}
+
+			card.Add(new AdaptiveTextBlock($"Found {counter} user(s) in total."));
 
 			engine.AddScriptOutput("AdaptiveCard", JsonConvert.SerializeObject(card));
 		}
