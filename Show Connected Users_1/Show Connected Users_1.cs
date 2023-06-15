@@ -83,6 +83,7 @@ namespace Show_Connected_Users_1
 			DMSMessage[] response = engine.SendSLNetMessage(getInfoMessage);
 			int counter = 0;
 			int responsesCount = response.Count();
+			bool adminRecordFoundHTML5App = false;
 
 			card.Add(new AdaptiveTextBlock($"Found {responsesCount} response(s) in total of type 'LoginInfoResponseMessage'."));
 
@@ -95,6 +96,11 @@ namespace Show_Connected_Users_1
 				};
 				if (responseMessage.FriendlyName.ToLower().Contains("html5"))
 				{
+					if (!adminRecordFoundHTML5App && responseMessage.FullName.ToLower().Contains("administrator")
+					{
+						adminRecordFoundHTML5App = true;
+						continue;
+					}
 					card.Add(new AdaptiveTextBlock($"Via HTML5 App: {responseMessage.FullName}"));
 					counter++;
 				};
