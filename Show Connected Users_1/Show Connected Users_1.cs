@@ -96,7 +96,7 @@ namespace Show_Connected_Users_1
 				};
 				if (responseMessage.FriendlyName.ToLower().Contains("html5"))
 				{
-					if (!adminRecordFoundHTML5App && responseMessage.FullName.ToLower().Contains("administrator")
+					if (!adminRecordFoundHTML5App && responseMessage.FullName.ToLower().Contains("administrator"))
 					{
 						adminRecordFoundHTML5App = true;
 						continue;
