@@ -43,9 +43,9 @@ Any inquiries can be addressed to:
 ****************************************************************************
 Revision History:
 
-DATE		VERSION		AUTHOR			COMMENTS
+DATE		VERSION		AUTHOR			    COMMENTS
 
-14/06/2023	1.0.0.1		JAY, Skyline	Initial version
+14/06/2023	1.0.0.1		JAY & JSL, Skyline	Initial version
 ****************************************************************************
 */
 
@@ -53,15 +53,13 @@ namespace Show_Connected_Users_1
 {
 	using System;
 	using System.Collections.Generic;
-	using System.Globalization;
-	using System.Text;
+	using System.Linq;
 	using AdaptiveCards;
 	using Newtonsoft.Json;
+	using Show_Connected_Users_1.Groups;
+	using Show_Connected_Users_1.Logger;
+	using Show_Connected_Users_1.Users;
 	using Skyline.DataMiner.Automation;
-	using Skyline.DataMiner.Net.PerformanceIndication;
-	using Skyline.DataMiner.Net;
-	using Skyline.DataMiner.Net.Messages;
-	using System.Linq;
 
 	/// <summary>
 	/// Represents a DataMiner Automation script.
@@ -74,41 +72,159 @@ namespace Show_Connected_Users_1
 		/// <param name="engine">Link with SLAutomation process.</param>
 		public void Run(IEngine engine)
 		{
-			var card = new List<AdaptiveElement>
+			try
 			{
-				new AdaptiveTextBlock($"Below you can find the list of all the users connected and via which client.") { Wrap = true },
-			};
+				// Get all info
+				var userInfo = Group.GetUserNameToGroupsNameMap(engine);
+				var connectedUsers = User.GetConnectedUsers(engine, userInfo);
 
-			var getInfoMessage = new GetInfoMessage(InfoType.ClientList);
-			DMSMessage[] response = engine.SendSLNetMessage(getInfoMessage);
-			int counter = 0;
-			int responsesCount = response.Count();
-			bool adminRecordFoundHTML5App = false;
-
-			card.Add(new AdaptiveTextBlock($"Found {responsesCount} response(s) in total of type 'LoginInfoResponseMessage'."));
-
-			foreach (Skyline.DataMiner.Net.Messages.LoginInfoResponseMessage responseMessage in response)
+				GenerateUI(engine, connectedUsers);
+			}
+			catch (Exception ex)
 			{
-				if (responseMessage.FriendlyName.ToLower().Contains("cube"))
-				{
-					card.Add(new AdaptiveTextBlock($"Via Cube: {responseMessage.FullName}"));
-					counter++;
-				};
-				if (responseMessage.FriendlyName.ToLower().Contains("html5"))
-				{
-					if (!adminRecordFoundHTML5App && responseMessage.FullName.ToLower().Contains("administrator"))
-					{
-						adminRecordFoundHTML5App = true;
-						continue;
-					}
-					card.Add(new AdaptiveTextBlock($"Via HTML5 App: {responseMessage.FullName}"));
-					counter++;
-				};
+				Log.ErrorMessage(engine, "Something went wrong when trying to get all connected users", ex);
+			}
+		}
+
+		private static void GenerateUI(IEngine engine, List<User> connectedUsers)
+		{
+			var card = GenerateCardContent(connectedUsers);
+			var table = GenerateTableContent(connectedUsers);
+
+			var adaptiveCardBody = new List<AdaptiveElement>();
+			adaptiveCardBody.AddRange(card);
+
+			if (connectedUsers.Count > 0)
+			{
+				adaptiveCardBody.Add(table);
 			}
 
-			card.Add(new AdaptiveTextBlock($"Found {counter} user(s) in total."));
+			engine.AddScriptOutput("AdaptiveCard", JsonConvert.SerializeObject(adaptiveCardBody));
+		}
 
-			engine.AddScriptOutput("AdaptiveCard", JsonConvert.SerializeObject(card));
+		private static List<AdaptiveElement> GenerateCardContent(List<User> connectedUsers)
+		{
+			return new List<AdaptiveElement>
+					{
+						new AdaptiveTextBlock($"At the moment there are {connectedUsers.Count} active users.") { Wrap = true },
+					};
+		}
+
+		private static AdaptiveTable GenerateTableContent(List<User> connectedUsers)
+		{
+			var table = new AdaptiveTable
+			{
+				Type = "Table",
+				FirstRowAsHeaders = true,
+				Columns = new List<AdaptiveTableColumnDefinition>
+				{
+					new AdaptiveTableColumnDefinition
+					{
+						Width = 100,
+					},
+					new AdaptiveTableColumnDefinition
+					{
+						Width = 250,
+					},
+					new AdaptiveTableColumnDefinition
+					{
+						Width = 100,
+					},
+				},
+				Rows = new List<AdaptiveTableRow>
+				{
+					new AdaptiveTableRow
+					{
+						Type = "TableRow",
+						Cells = new List<AdaptiveTableCell>
+						{
+							new AdaptiveTableCell
+							{
+								Type = "TableCell",
+								Items = new List<AdaptiveElement>
+								{
+									new AdaptiveTextBlock("Name")
+									{
+										Type = "TextBlock",
+										Weight = AdaptiveTextWeight.Bolder,
+									},
+								},
+							},
+							new AdaptiveTableCell
+							{
+								Type = "TableCell",
+								Items = new List<AdaptiveElement>
+								{
+									new AdaptiveTextBlock("Group(s)")
+									{
+										Type = "TextBlock",
+										Weight = AdaptiveTextWeight.Bolder,
+									},
+								},
+							},
+							new AdaptiveTableCell
+							{
+								Type = "TableCell",
+								Items = new List<AdaptiveElement>
+								{
+									new AdaptiveTextBlock("Client")
+									{
+										Type = "TextBlock",
+										Weight = AdaptiveTextWeight.Bolder,
+									},
+								},
+							},
+						},
+					},
+				},
+			};
+			foreach (var user in connectedUsers)
+			{
+				var row = new AdaptiveTableRow
+				{
+					Type = "TableRow",
+					Cells = new List<AdaptiveTableCell>
+					{
+						new AdaptiveTableCell
+						{
+							Type = "TableCell",
+							Items = new List<AdaptiveElement>
+							{
+								new AdaptiveTextBlock(user.UserName)
+								{
+									Type = "TextBlock",
+									Wrap = true,
+								},
+							},
+						},
+						new AdaptiveTableCell
+						{
+							Type = "TableCell",
+							Items = user.GroupNames.Select(x => new AdaptiveTextBlock(x)
+								{
+									Type = "TextBlock",
+									Wrap = true,
+								}).ToList<AdaptiveElement>(),
+						},
+						new AdaptiveTableCell
+						{
+							Type = "TableCell",
+							Items = new List<AdaptiveElement>
+							{
+								new AdaptiveTextBlock(user.ConnectionName)
+								{
+									Type = "TextBlock",
+									Wrap = true,
+								},
+							},
+						},
+					},
+				};
+
+				table.Rows.Add(row);
+			}
+
+			return table;
 		}
 	}
 }
