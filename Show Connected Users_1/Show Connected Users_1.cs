@@ -55,9 +55,9 @@ namespace Show_Connected_Users_1
 	using System.Collections.Generic;
 	using System.Linq;
 	using AdaptiveCards;
-	using ChatOps_Users_1.Groups;
-	using ChatOps_Users_1.Logger;
-	using ChatOps_Users_1.Users;
+	using Library.Groups;
+	using Library.Logger;
+	using Library.Users;
 	using Newtonsoft.Json;
 	using Skyline.DataMiner.Automation;
 

@@ -24,7 +24,6 @@
 			<Value><![CDATA[[Project:Inform Online Users_1]]]></Value>
 			<!--<Param type="debug">true</Param>-->
 			<Message></Message>
-			<Param type="scriptRef">ChatOps-Users</Param>
 		</Exe>
 	</Script>
 </DMSScript>

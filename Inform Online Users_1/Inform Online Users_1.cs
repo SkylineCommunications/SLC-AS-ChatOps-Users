@@ -55,8 +55,8 @@ namespace Inform_Online_Users_1
 	using System.Collections.Generic;
 	using System.Linq;
 	using AdaptiveCards;
-	using ChatOps_Users_1.Logger;
-	using ChatOps_Users_1.Users;
+	using Library.Logger;
+	using Library.Users;
 	using Newtonsoft.Json;
 	using Skyline.DataMiner.Automation;
 	using Skyline.DataMiner.Net.Broadcast;

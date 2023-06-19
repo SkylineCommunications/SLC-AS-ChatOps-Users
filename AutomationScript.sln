@@ -49,14 +49,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{1EED
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inform Online Users_1", "Inform Online Users_1\Inform Online Users_1.csproj", "{5532E919-44AC-4BA9-A0A7-B694C96D97D4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ChatOps-Users", "ChatOps-Users", "{BD9FA60C-0D0F-46A2-8C31-CF126CDD6DB1}"
-	ProjectSection(SolutionItems) = preProject
-		ChatOps-Users.xml = ChatOps-Users.xml
-	EndProjectSection
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{086CF725-B5DB-42A8-A0C4-7CEC431243ED}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{1C172D0B-2682-4675-A14D-3D87174E3838}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatOps-Users_1", "ChatOps-Users_1\ChatOps-Users_1.csproj", "{31852F98-6A27-4317-A620-59F0E9175978}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Library", "Library\Library.shproj", "{4C49C37B-7FFB-4815-8F91-173A64276195}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,10 +67,6 @@ Global
 		{5532E919-44AC-4BA9-A0A7-B694C96D97D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5532E919-44AC-4BA9-A0A7-B694C96D97D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5532E919-44AC-4BA9-A0A7-B694C96D97D4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{31852F98-6A27-4317-A620-59F0E9175978}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{31852F98-6A27-4317-A620-59F0E9175978}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{31852F98-6A27-4317-A620-59F0E9175978}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{31852F98-6A27-4317-A620-59F0E9175978}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,11 +80,14 @@ Global
 		{C84B19B7-C6B1-4017-9BBC-81A9C445C71B} = {BCAC682E-1CAC-4EA3-B932-87179F98B88C}
 		{1EED37DD-37B2-4D22-92E9-A088F19C56CD} = {C84B19B7-C6B1-4017-9BBC-81A9C445C71B}
 		{5532E919-44AC-4BA9-A0A7-B694C96D97D4} = {1EED37DD-37B2-4D22-92E9-A088F19C56CD}
-		{BD9FA60C-0D0F-46A2-8C31-CF126CDD6DB1} = {BCAC682E-1CAC-4EA3-B932-87179F98B88C}
-		{1C172D0B-2682-4675-A14D-3D87174E3838} = {BD9FA60C-0D0F-46A2-8C31-CF126CDD6DB1}
-		{31852F98-6A27-4317-A620-59F0E9175978} = {1C172D0B-2682-4675-A14D-3D87174E3838}
+		{4C49C37B-7FFB-4815-8F91-173A64276195} = {086CF725-B5DB-42A8-A0C4-7CEC431243ED}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8C6C47E7-25C1-4E90-931C-E5C1BB3EC78F}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Library\Library.projitems*{4c49c37b-7ffb-4815-8f91-173a64276195}*SharedItemsImports = 13
+		Library\Library.projitems*{5532e919-44ac-4ba9-a0a7-b694c96d97d4}*SharedItemsImports = 4
+		Library\Library.projitems*{8086ee82-b41f-4077-ba24-e3f9c291aecb}*SharedItemsImports = 4
 	EndGlobalSection
 EndGlobal
