@@ -16,6 +16,8 @@ Kindly ensure that your DataMiner system and your Microsoft Teams adhere to the 
 
 Automation script that returns all users currently connected to the connected DMS (DataMiner System) via Cube. Moreover, the single or multiple groups to which this user belongs are also indicated. 
 
+![Animation of the command to show all connected users](/Documentation/ShowConnectedUsersExample.gif)
+
 
 ## Inform Online Users
 
