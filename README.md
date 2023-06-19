@@ -21,14 +21,10 @@ Automation script that returns all users currently connected to the connected DM
 
 ## Inform Online Users
 
-Automation script that enables the user to inform all online users. A broadcast message can be defined as an input parameter. 
+Automation script that enables the user to inform all online users. A broadcast message can be defined as an input parameter. The user that ran the script will get a confirmation from the Teams Bot that the message had been broadcasted. 
 
-![Example of broadcasted message as an input parameter](/Documentation/ExampleOfMessageAsAnInputParameter.png)
+![Animation of the command to inform online users](/Documentation/RunInformOnlineUsers.gif)
 
 All online users will see a message appear on their Cube application in a message box. 
 
 ![Example of broadcasted message in a message box](/Documentation/ExampleBroadcastedMessageInAMessageBox.png)
-
-The user that ran the script will get a confirmation from the Teams Bot that the message had been broadcasted. 
-
-![Confirmation that the message has been broadcasted](/Documentation/ConfirmationThatMessageIsBroadcasted.png)
