@@ -25,6 +25,6 @@ Automation script that enables the user to inform all online users. A broadcast 
 
 ![Animation of the command to inform online users](/Documentation/RunInformOnlineUsers.gif)
 
-All online users will see a message appear on their Cube application in a message box. 
+All online users will see a message appear on their Cube application in a pop-up.
 
-![Example of broadcasted message in a message box](/Documentation/ExampleBroadcastedMessageInAMessageBox.png)
+![Example of broadcasted message in a message box](/Documentation/BroadcastedMessagePoppingUpAtAllOnlineUsers.gif)
