@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <DMSScript options="272" xmlns="http://www.skyline.be/automation">
-	<Name>Show Connected Users</Name>
+	<Name>ChatOps-Users</Name>
 	<Description></Description>
 	<Type>Automation</Type>
-	<Author>SKYLINE2\JoachimAY</Author>
+	<Author>SKYLINE2\JoseSL</Author>
 	<CheckSets>FALSE</CheckSets>
 	<Folder>bot</Folder>
 
@@ -18,10 +18,11 @@
 
 	<Script>
 		<Exe id="1" type="csharp">
-			<Value><![CDATA[[Project:Show Connected Users_1]]]></Value>
+			<Value><![CDATA[[Project:ChatOps-Users_1]]]></Value>
 			<!--<Param type="debug">true</Param>-->
 			<Message></Message>
-			<Param type="scriptRef">ChatOps-Users</Param>
+			<Param type="libraryName">ChatOps-Users</Param>
+			<Param type="preCompile">true</Param>
 		</Exe>
 	</Script>
 </DMSScript>

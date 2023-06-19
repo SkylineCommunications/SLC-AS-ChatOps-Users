@@ -45,7 +45,7 @@ Revision History:
 
 DATE		VERSION		AUTHOR			COMMENTS
 
-16/06/2023	1.0.0.1		JSL, Skyline	Initial version
+16/06/2023	1.0.0.1		JSL & JAY, Skyline	Initial version
 ****************************************************************************
 */
 
@@ -53,10 +53,15 @@ namespace Inform_Online_Users_1
 {
 	using System;
 	using System.Collections.Generic;
-	using System.Globalization;
-	using System.Text;
+	using System.Linq;
+	using AdaptiveCards;
+	using ChatOps_Users_1.Logger;
+	using ChatOps_Users_1.Users;
+	using Newtonsoft.Json;
 	using Skyline.DataMiner.Automation;
-	
+	using Skyline.DataMiner.Net.Broadcast;
+	using Skyline.DataMiner.Net.Messages;
+
 	/// <summary>
 	/// Represents a DataMiner Automation script.
 	/// </summary>
@@ -68,7 +73,58 @@ namespace Inform_Online_Users_1
 		/// <param name="engine">Link with SLAutomation process.</param>
 		public void Run(IEngine engine)
 		{
-	
+			try
+			{
+				var messageToSend = engine.GetScriptParam("MessageToBroadcast").Value;
+				var connectedUsers = User.GetConnectedUsersByName(engine);
+
+				SendPopUpMessageToOnlineUsers(engine, messageToSend, connectedUsers);
+				GenerateUI(engine);
+			}
+			catch (Exception ex)
+			{
+				Log.ErrorMessage(engine, "Something went wrong when trying to inform all connected users", ex);
+				GenerateUI(engine, false);
+			}
+		}
+
+		private static void SendPopUpMessageToOnlineUsers(IEngine engine, string messageToSend, List<User> connectedUsers)
+		{
+			var popup = new BroadcastPopupRequestMessage
+			{
+				PopupInfo = new PopupInfo
+				{
+					Expiration = DateTime.Now.AddHours(1),
+					Message = messageToSend,
+					Source = Guid.NewGuid(),
+					Title = "Coming from Teams Chat Bot",
+				},
+			};
+
+			popup.PopupInfo.UserNames = connectedUsers.Select(x => x.UserName).ToList();
+			popup.PopupInfo.GroupNames = new List<string>() { "none" };
+
+			engine.SendSLNetMessage(popup);
+		}
+
+		private static void GenerateUI(IEngine engine, bool succeed = true)
+		{
+			var card = GenerateCardContent(succeed);
+
+			var adaptiveCardBody = new List<AdaptiveElement>();
+			adaptiveCardBody.AddRange(card);
+
+			engine.AddScriptOutput("AdaptiveCard", JsonConvert.SerializeObject(adaptiveCardBody));
+		}
+
+		private static List<AdaptiveElement> GenerateCardContent(bool succeed)
+		{
+			string message = succeed ? "Message was sent to all on-line users." : "A problem occurred when sending the message to all on-line users.";
+
+			return new List<AdaptiveElement>
+					{
+						new AdaptiveTextBlock(message) { Wrap = true },
+					};
 		}
 	}
 }

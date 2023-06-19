@@ -5,7 +5,7 @@
 	<Type>Automation</Type>
 	<Author>SKYLINE2\JoseSL</Author>
 	<CheckSets>FALSE</CheckSets>
-	<Folder></Folder>
+	<Folder>bot</Folder>
 
 	<Protocols>
 	</Protocols>
@@ -14,6 +14,9 @@
 	</Memory>
 
 	<Parameters>
+		<ScriptParameter id="2" type="string" values="">
+			<Description>MessageToBroadcast</Description>
+		</ScriptParameter>
 	</Parameters>
 
 	<Script>
@@ -21,6 +24,7 @@
 			<Value><![CDATA[[Project:Inform Online Users_1]]]></Value>
 			<!--<Param type="debug">true</Param>-->
 			<Message></Message>
+			<Param type="scriptRef">ChatOps-Users</Param>
 		</Exe>
 	</Script>
 </DMSScript>

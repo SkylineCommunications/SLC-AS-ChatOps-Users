@@ -45,12 +45,8 @@
     <Content Include=".editorconfig" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Groups\Group.cs" />
-    <Compile Include="Logger\Log.cs" />
-    <Compile Include="Messages\SLNetMessages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Show Connected Users_1.cs" />
-    <Compile Include="Users\User.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AdaptiveCards">
@@ -65,7 +61,12 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ChatOps-Users_1\ChatOps-Users_1.csproj">
+      <Project>{31852F98-6A27-4317-A620-59F0E9175978}</Project>
+      <Name>ChatOps-Users_1</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>

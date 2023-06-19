@@ -1,4 +1,4 @@
-﻿namespace Show_Connected_Users_1.Logger
+﻿namespace ChatOps_Users_1.Logger
 {
 	using System;
 	using Skyline.DataMiner.Automation;
@@ -7,7 +7,7 @@
 	{
 		public static void ErrorMessage(IEngine engine, string error, Exception exception)
 		{
-			engine.Log($"{error}: {exception}");
+			engine.Log($"{error}: {exception.Message}");
 			engine.ExitFail($"{error}: {exception.Message}");
 		}
 	}

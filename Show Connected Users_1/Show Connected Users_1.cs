@@ -55,10 +55,10 @@ namespace Show_Connected_Users_1
 	using System.Collections.Generic;
 	using System.Linq;
 	using AdaptiveCards;
+	using ChatOps_Users_1.Groups;
+	using ChatOps_Users_1.Logger;
+	using ChatOps_Users_1.Users;
 	using Newtonsoft.Json;
-	using Show_Connected_Users_1.Groups;
-	using Show_Connected_Users_1.Logger;
-	using Show_Connected_Users_1.Users;
 	using Skyline.DataMiner.Automation;
 
 	/// <summary>
@@ -76,7 +76,7 @@ namespace Show_Connected_Users_1
 			{
 				// Get all info
 				var userInfo = Group.GetUserNameToGroupsNameMap(engine);
-				var connectedUsers = User.GetConnectedUsers(engine, userInfo);
+				var connectedUsers = User.GetConnectedUsersByFullName(engine, userInfo);
 
 				GenerateUI(engine, connectedUsers);
 			}

@@ -1,4 +1,4 @@
-﻿namespace Show_Connected_Users_1.Messages
+﻿namespace ChatOps_Users_1.Messages
 {
 	using Skyline.DataMiner.Automation;
 	using Skyline.DataMiner.Net.Messages;

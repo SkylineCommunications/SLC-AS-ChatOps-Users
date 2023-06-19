@@ -1,7 +1,7 @@
-﻿namespace Show_Connected_Users_1.Groups
+﻿namespace ChatOps_Users_1.Groups
 {
 	using System.Collections.Generic;
-	using Show_Connected_Users_1.Messages;
+	using ChatOps_Users_1.Messages;
 	using Skyline.DataMiner.Automation;
 	using Skyline.DataMiner.Net.Messages;
 
