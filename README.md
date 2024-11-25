@@ -14,7 +14,7 @@ Make sure that your DMS and your Microsoft Teams installation meet the prerequis
 
 ## Show Connected Users
 
-This Automation script returns all users who are currently using DataMiner Cube to connect to the connected DMS. The group or groups that this user is a member of are also indicated. 
+This Automation script returns all users who are currently using DataMiner Cube to connect to the connected DMS. The group or groups that each user is a member of are also indicated. 
 
 ![Animation of the command to show all connected users](/Documentation/ShowConnectedUsersExample.gif)
 
