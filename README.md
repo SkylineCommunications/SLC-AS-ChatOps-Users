@@ -1,6 +1,6 @@
 # SLC-AS-ChatOps-Users
 
-This repository contains an Automation script solution with scripts that can be used to interact with a DataMiner System (DMS) using the DataMiner Teams bot.
+This solution consists of commands or "ChatOps Extensions" that allow you to interact with a DataMiner System using the [DataMiner Teams Bot](https://docs.dataminer.services/user-guide/Cloud_Platform/TeamsBot/DataMiner_Teams_bot.html).
 
 ## Available scripts
 
