@@ -1,30 +1,32 @@
 # SLC-AS-ChatOps-Users
 
-This repository contains an automation script solution with scripts that can be used to retrieve Element information from your DataMiner system using the DataMiner Teams bot.
+This solution consists of commands or "ChatOps Extensions" that allow you to interact with a DataMiner System using the [DataMiner Teams bot](https://docs.dataminer.services/user-guide/Cloud_Platform/TeamsBot/DataMiner_Teams_bot.html).
 
-The following scrips are currently available:
+## Available scripts
+
+The following scripts are currently available:
 
 - [Show Connected Users](#Show-Connected-Users)
 
 - [Inform Online Users](#Inform-Online-Users)
 
-## Pre-requisites
+### Show Connected Users
 
-Kindly ensure that your DataMiner system and your Microsoft Teams adhere to the pre-requisites described in [DM Docs](https://docs.dataminer.services/user-guide/Cloud_Platform/TeamsBot/Microsoft_Teams_Chat_Integration.html#server-side-prerequisites).
-
-## Show Connected Users
-
-Automation script that returns all users currently connected to the connected DMS (DataMiner System) via Cube. Moreover, the single or multiple groups to which this user belongs are also indicated. 
+This Automation script returns all users who are currently using DataMiner Cube to connect to the connected DMS. The group or groups that each user is a member of are also indicated. 
 
 ![Animation of the command to show all connected users](/Documentation/ShowConnectedUsersExample.gif)
 
 
-## Inform Online Users
+### Inform Online Users
 
-Automation script that enables the user to inform all online users. A broadcast message can be defined as an input parameter. The user that ran the script will get a confirmation from the Teams Bot that the message had been broadcasted. 
+This Automation script enables users to inform all online users with a message. A broadcast message can be defined as an input parameter. The user running the script will get a confirmation from the Teams bot when the message has been broadcast. 
 
 ![Animation of the command to inform online users](/Documentation/RunInformOnlineUsers.gif)
 
-All online users will see a message appear on their Cube application in a pop-up.
+All online users will see a pop-up message appear in DataMiner Cube.
 
 ![Example of broadcasted message in a message box](/Documentation/BroadcastedMessagePoppingUpAtAllOnlineUsers.gif)
+
+## Prerequisites
+
+Make sure that your DMS and your Microsoft Teams installation meet the prerequisites described on [DataMiner Docs](https://aka.dataminer.services/ChatOps-server-side-prerequisites).
